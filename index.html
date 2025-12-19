@@ -4,8 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="theme-color" content="#83977c"/>
-    <meta name="description" content="Official Menu for DCH - Dhamnod Coffee House">
-    <title>DCH – Dhamnod Coffee House</title>
+    
+    <title>DCH – Dhamnod Coffee House | Best Cafe & Food in Dhamnod</title>
+    <meta name="description" content="Order food online from DCH - Dhamnod Coffee House. Serving the best sandwiches, pizza, burgers, and coffee in Dhamnod, Dhar. Visit us near Bharat Petrol Pump.">
+    <meta name="keywords" content="DCH Cafe, Dhamnod Coffee House, Cafe in Dhamnod, Pizza in Dhamnod, Best Coffee Dhamnod, Food Delivery Dhamnod, Fast Food Dhamnod, DCH Menu">
+    <meta name="author" content="DCH Dhamnod">
+
+    <meta property="og:title" content="DCH – Dhamnod Coffee House">
+    <meta property="og:description" content="Order the best Pizza, Burgers, and Coffee in Dhamnod. Check out our menu!">
+    <meta property="og:type" content="restaurant.menu">
+    <meta property="og:url" content="https://dch-cafe.netlify.app">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "DCH - Dhamnod Coffee House",
+      "telephone": "+918982628715",
+      "priceRange": "₹₹",
+      "servesCuisine": ["Coffee", "Fast Food", "Pizza", "Sandwiches"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Near Bharat Petrol Pump, Maheshwar Road",
+        "addressLocality": "Dhamnod",
+        "addressRegion": "Madhya Pradesh",
+        "postalCode": "454552",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 22.2133,
+        "longitude": 75.4777
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "10:00",
+          "closes": "19:00"
+        }
+      ]
+    }
+    </script>
     
     <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkRDSCAtIERoYW1ub2QgQ29mZmVlIEhvdXNlIiwKICAic2hvcnRfbmFtZSI6ICJEQ0ggQ2FmZSIsCiAgImRlc2NyaXB0aW9uIjogIk9yZGVyIGZvb2QgZnJvbSBEQ0ggQ2FmZSBpbiBEaGFtbm9kIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmN2YzZTgiLAogICJ0aGVtZV9jb2xvciI6ICIjODM5NzdjIgp9">
 
@@ -41,7 +87,6 @@
             font-weight:700;
             margin:0;
             flex-shrink:0; 
-            /* Fallback text if image fails or while loading */
             color: var(--color-espresso);
             display: flex;
             align-items: center;
@@ -187,7 +232,7 @@
 
 <div id="home-page" class="page" style="display: block;">
   <header class="header">
-    <div class="cafe-title">DCH Cafe</div>
+    <h1 class="cafe-title">DCH Cafe</h1>
     <div class="nav-actions">
         <button class="nav-button secondary" onclick="openLocation()" title="Location">
             <svg class="maps-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -203,7 +248,7 @@
   <main class="content-area home-content">
     <h2 class="section-title">Welcome to Our Family Table</h2>
     <p class="cafe-brief">
-      Nestled in the heart of Dhamnod, DCH Cafe is dedicated to crafting delightful experiences. We serve freshly brewed coffee, homemade treats, and wholesome food, all made with love.
+      Nestled in the heart of <strong>Dhamnod, Madhya Pradesh</strong>, DCH Cafe is dedicated to crafting delightful experiences. We serve freshly brewed coffee, pizza, homemade treats, and wholesome food, all made with love.
     </p>
     
     <div style="text-align: center; margin-bottom: 25px; padding: 15px; background-color: #f0ebe0; border-radius: 12px; border: 1px dashed var(--color-sage);">
@@ -233,7 +278,7 @@
 
 <div id="menu-page" class="page" style="display: none;">
   <header class="header">
-    <div class="cafe-title">Menu</div>
+    <h1 class="cafe-title">Menu</h1>
     <div class="nav-actions">
         <div class="cart-container">
             <button class="cart-button" onclick="showCart()" aria-label="View Cart">🛒</button>
@@ -681,7 +726,7 @@
         triggerHaptic();
         // This link is safe for all devices (Android, iPhone, Desktop)
         // It opens the App if installed, or the Browser if not.
-        const mapUrl = "https://www.google.com/maps/search/?api=1&query=Dhamnod+Coffee+House+Near+Bharat+Petrol+Pump+Dhamnod";
+        const mapUrl = "https://www.google.com/maps...";
         window.open(mapUrl, '_blank');
     }
 
@@ -812,3 +857,4 @@
 </script>
 </body>
 </html>
+
