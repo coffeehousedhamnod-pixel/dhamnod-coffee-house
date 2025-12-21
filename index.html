@@ -26,19 +26,19 @@
         .cafe-title { font-family:var(--font-title); font-size:1.6rem; font-weight:700; margin:0; flex-shrink:0; text-indent: -9999px; white-space: nowrap; overflow: hidden; width: 120px; height: 40px; background-size: contain; background-repeat: no-repeat; background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAgIDASIAAhEBAQEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAQIAAwQFBgf/xAA5EAACAgEDAwIEBAUEAQMFAAABAgADESEEBRIxQRMiUWEycYGRBhQjQqHRFLHB4fDxByMzUpL/xAAbAQACAwEBAQAAAAAAAAAAAAAAAQIDBAUGB//EADcRAAEDAgQDBgQEBQQCAgMAAAABAhEAAwQFEiExQQYhUWFxEyKBkaHBsdHwMjNCQuEV8RUzYnL/2gAARCAEAAgIDASIAAhEBAxEB/8AxtE+K8o3GvXzM8x7J/aYJpGjHpnxXm442G43n+c1zM8x7I+1H2u2I3G40D5jXW5Uu3p0RzCj+iS8x45jXgM3Yt47o2+03F8b7/AGm17kG+G79T4x5g/wAJ/wB7j/d+f/9Z'); }
         @media (max-width:520px){ .cafe-title{ width: 90px; height: 30px; } }
 
-        /* UI */
+        /* UI UTILITIES */
         body::-webkit-scrollbar { width: 8px; }
         body::-webkit-scrollbar-track { background: var(--color-cream); }
         body::-webkit-scrollbar-thumb { background: var(--color-sage); border-radius: 4px; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes itemFadeIn { from { opacity: 0; transform: translateX(-15px); } to { opacity: 1; transform: translateX(0); } }
 
-        /* TOAST */
+        /* TOAST NOTIFICATION */
         #toast-container { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 3000; }
         .toast { background-color: var(--color-dark-sage); color: white; padding: 10px 20px; border-radius: 6px; box-shadow: 0 3px 10px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.3s ease-out; }
         .toast.show { opacity: 1; }
 
-        /* LAYOUT */
+        /* PAGE LAYOUT */
         .page{ min-height:100vh; padding-top:80px; }
         .page[style*="display: block"] { animation: fadeIn 0.4s ease-out; }
         .header{ position:fixed; top:0; left:0; width:100%; background-color:var(--color-cream); padding:12px 22px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 4px rgba(56,43,34,0.1); z-index:1000; white-space:nowrap; }
@@ -51,7 +51,7 @@
         .nav-button.secondary:hover { background-color: #f0f0f0; }
         .maps-icon { width: 18px; height: 18px; }
 
-        /* CART */
+        /* CART BUTTON */
         .cart-container { position: relative; display: inline-block; }
         .cart-button{ background: none; border: none; color: var(--color-espresso); font-size: 1.4rem; cursor: pointer; padding: 0 5px; transition: color .18s ease; }
         .cart-button:hover{ color: var(--color-dark-sage); transform: scale(1.1); }
@@ -70,7 +70,7 @@
         .empty-cart-display { text-align: center; padding: 30px 0; color: var(--color-sage); opacity: 0.8; }
         .checkout-btn { background-color: var(--color-sage); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 1.1rem; width: 100%; margin-top: 15px; }
 
-        /* CONTENT */
+        /* CONTENT GENERAL */
         .content-area{ max-width:1200px; margin:0 auto; padding:20px; }
         .section-title{ font-family:var(--font-title); font-size:2rem; text-align:center; margin-top:40px; margin-bottom:16px; color:var(--color-dark-sage); }
         .cafe-brief{ text-align:center; font-size:1.05rem; line-height:1.6; max-width:680px; margin:0 auto 30px; }
@@ -228,78 +228,93 @@
 
 <script>
     // ==========================================
-    // 🔧 YOUR GOOGLE SHEET LINK IS SET HERE
+    // 🔧 YOUR FINAL LINKS ARE SET BELOW
     // ==========================================
-    const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQysn0Aj4LdO3zWXYRqmyZInqcq0EPS6cPGRlccczj0g9qT3LPo0Kn0424C3XSQ45StT6c8wocbnQy6/pub?output=csv";
+    
+    // 1. MENU LINK (gid=0)
+    const MENU_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQysn0Aj4LdO3zWXYRqmyZInqcq0EPS6cPGRlccczj0g9qT3LPo0Kn0424C3XSQ45StT6c8wocbnQy6/pub?gid=0&single=true&output=csv";
+    
+    // 2. GALLERY LINK (gid=605286592)
+    const GALLERY_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQysn0Aj4LdO3zWXYRqmyZInqcq0EPS6cPGRlccczj0g9qT3LPo0Kn0424C3XSQ45StT6c8wocbnQy6/pub?gid=605286592&single=true&output=csv";
+    
+    // ==========================================
     
     let cart = [];
     let menuData = [];
 
-    // 1. FETCH DATA ON LOAD
+    // 1. FETCH DATA (Load both sheets)
     window.onload = function() {
-        Papa.parse(GOOGLE_SHEET_CSV_URL, {
+        // Load Menu
+        Papa.parse(MENU_CSV_URL, {
             download: true,
             header: true,
             complete: function(results) {
                 menuData = results.data;
                 initMenuSystem();
-                initGallery(); // LOAD GALLERY
-            },
-            error: function(err) {
-                document.getElementById('loading-message').textContent = "Error loading menu. Please check internet connection.";
-                console.error("CSV Error:", err);
             }
         });
+
+        // Load Gallery
+        Papa.parse(GALLERY_CSV_URL, {
+            download: true,
+            header: true,
+            complete: function(results) {
+                initGallery(results.data);
+            }
+        });
+        
         updateCartCount();
     };
-    
-    // 2. GALLERY INITIALIZATION (NEW)
-    function initGallery() {
-        // Filter rows where Category is "Gallery"
-        const galleryItems = menuData.filter(item => item.Category && item.Category.toLowerCase() === 'gallery');
+
+    // 2. BUILD GALLERY (From Separate Sheet)
+    function initGallery(galleryData) {
         const galleryContainer = document.getElementById('gallery-scroller');
         const gallerySection = document.getElementById('home-gallery-section');
         
-        // If no gallery items in sheet, keep it hidden
-        if(galleryItems.length === 0) return;
+        // Check if gallery has items
+        if(!galleryData || galleryData.length === 0) return;
         
-        // Otherwise, show section and add images
         gallerySection.style.display = 'block';
-        
-        galleryItems.forEach(item => {
-            // NOTE: Description column holds the Image URL
-            const imageUrl = item.Description; 
+        galleryContainer.innerHTML = ''; // Clear existing
+
+        galleryData.forEach(item => {
+            // In the separate sheet: 
+            // Column A = Name (Caption)
+            // Column C = Link (Image URL)
+            
+            // Note: PapaParse reads headers. Ensure your Gallery sheet headers are "Name" and "Link"
+            const imageUrl = item.Link; 
+            const caption = item.Name;
+
             if(!imageUrl) return;
 
             const card = document.createElement('div');
             card.className = 'gallery-card';
             card.innerHTML = `
-                <img src="${imageUrl}" class="gallery-img" alt="${item.Name}" onerror="this.style.display='none'">
-                <div class="gallery-caption">${item.Name}</div>
+                <img src="${imageUrl}" class="gallery-img" alt="${caption}" onerror="this.style.display='none'">
+                <div class="gallery-caption">${caption}</div>
             `;
             galleryContainer.appendChild(card);
         });
     }
 
-    // 3. BUILD MENU HTML
+    // 3. BUILD MENU SYSTEM (From Menu Sheet)
     function initMenuSystem() {
         document.getElementById('loading-message').style.display = 'none';
         document.getElementById('category-buttons').style.display = 'grid';
         
         const container = document.getElementById('menu-container');
+        container.innerHTML = ''; // Clear container
+        
         const categories = [...new Set(menuData.map(item => item.Category))]; 
 
         categories.forEach(cat => {
             if(!cat) return; 
-            // Skip "Gallery" items in the food menu list
-            if(cat.toLowerCase() === 'gallery') return;
-
             const catId = cat.toLowerCase().replace(/ /g, '_'); 
             
             const section = document.createElement('div');
             section.id = catId + '-menu';
             section.className = 'menu-item-list hidden';
-            
             section.innerHTML = `<h3 class="menu-item-list-title">${cat.replace('_', ' ').toUpperCase()}</h3>`;
             
             const items = menuData.filter(i => i.Category === cat);
@@ -322,43 +337,34 @@
                 `;
                 section.appendChild(card);
             });
-            
             container.appendChild(section);
         });
     }
 
-    // 4. NAVIGATION & UI LOGIC
+    // --- NAVIGATION, CART & WHATSAPP LOGIC ---
+    
     function showCategory(catName, btn) {
         document.querySelectorAll('.category-button').forEach(b => b.classList.remove('active-category'));
         if(btn) btn.classList.add('active-category');
-        
         document.querySelectorAll('.menu-item-list').forEach(l => {
             l.classList.add('hidden');
-            l.querySelectorAll('.menu-item-card').forEach(c => {
-                 c.style.animation = 'none'; 
-                 c.style.opacity = '0';
-            });
+            l.querySelectorAll('.menu-item-card').forEach(c => { c.style.animation = 'none'; c.style.opacity = '0'; });
         });
-
         const targetId = catName + '-menu';
         const targetList = document.getElementById(targetId);
-        
         if (targetList) {
             targetList.classList.remove('hidden');
-            targetList.querySelectorAll('.menu-item-card').forEach(c => {
-                 c.style.animation = `itemFadeIn 0.3s ease-out forwards`;
-            });
+            targetList.querySelectorAll('.menu-item-card').forEach(c => c.style.animation = `itemFadeIn 0.3s ease-out forwards`);
             targetList.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
+             // Fallback search
             const allLists = document.querySelectorAll('.menu-item-list');
             let found = false;
             allLists.forEach(l => {
                 if(l.id.includes(catName)) {
                     l.classList.remove('hidden');
                     l.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    l.querySelectorAll('.menu-item-card').forEach(c => {
-                        c.style.animation = `itemFadeIn 0.3s ease-out forwards`;
-                    });
+                    l.querySelectorAll('.menu-item-card').forEach(c => c.style.animation = `itemFadeIn 0.3s ease-out forwards`);
                     found = true;
                 }
             });
@@ -366,26 +372,13 @@
         }
     }
 
-    function showMenu() {
-        document.getElementById('home-page').style.display = 'none';
-        document.getElementById('menu-page').style.display = 'block';
-    }
-    
-    function showHome() {
-        document.getElementById('menu-page').style.display = 'none';
-        document.getElementById('home-page').style.display = 'block';
-    }
+    function showMenu() { document.getElementById('home-page').style.display = 'none'; document.getElementById('menu-page').style.display = 'block'; }
+    function showHome() { document.getElementById('menu-page').style.display = 'none'; document.getElementById('home-page').style.display = 'block'; }
 
-    // 5. CART & WHATSAPP LOGIC
     function addToOrder(name, price) {
         const existingItem = cart.find(item => item.name === name);
-        if (existingItem) {
-            existingItem.quantity += 1;
-            showToast(`Added another: ${name}`);
-        } else {
-            cart.push({ name: name, price: parseInt(price), quantity: 1 });
-            showToast(`${name} added!`);
-        }
+        if (existingItem) { existingItem.quantity += 1; showToast(`Added another: ${name}`); } 
+        else { cart.push({ name: name, price: parseInt(price), quantity: 1 }); showToast(`${name} added!`); }
         updateCartCount();
     }
 
@@ -402,63 +395,30 @@
         const footer = document.querySelector('.modal-footer');
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-        if (cart.length === 0) {
-            list.innerHTML = '';
-            empty.style.display = 'block';
-            footer.innerHTML = `<button class="checkout-btn" onclick="closeModal()">Back to Menu</button>`;
-            return;
-        }
+        if (cart.length === 0) { list.innerHTML = ''; empty.style.display = 'block'; footer.innerHTML = `<button class="checkout-btn" onclick="closeModal()">Back to Menu</button>`; return; }
 
         empty.style.display = 'none';
-        list.innerHTML = cart.map(item => `
-            <li>
-                <span>${item.name}</span>
-                <div style="display:flex; align-items:center;">
-                    <span style="margin-right:5px;">₹${item.price}</span>
-                    <span class="item-qty">x${item.quantity}</span>
-                    <button class="remove-item-btn" onclick="removeItem('${item.name}')">×</button>
-                </div>
-            </li>
-        `).join('');
-
-        footer.innerHTML = `
-            <div style="display:flex; justify-content:space-between; padding:10px 0; font-weight:700;">
-                <span>Total:</span><span>₹${total}</span>
-            </div>
-            <button class="checkout-btn" style="background-color:#25D366" onclick="placeOrderWhatsApp()">Order on WhatsApp 💬</button>
-        `;
+        list.innerHTML = cart.map(item => `<li><span>${item.name}</span><div style="display:flex; align-items:center;"><span style="margin-right:5px;">₹${item.price}</span><span class="item-qty">x${item.quantity}</span><button class="remove-item-btn" onclick="removeItem('${item.name}')">×</button></div></li>`).join('');
+        footer.innerHTML = `<div style="display:flex; justify-content:space-between; padding:10px 0; font-weight:700;"><span>Total:</span><span>₹${total}</span></div><button class="checkout-btn" style="background-color:#25D366" onclick="placeOrderWhatsApp()">Order on WhatsApp 💬</button>`;
     }
 
     function removeItem(name) {
         const idx = cart.findIndex(i => i.name === name);
-        if(idx > -1) {
-            if(cart[idx].quantity > 1) cart[idx].quantity--;
-            else cart.splice(idx, 1);
-        }
-        updateCartCount();
-        renderCartItems();
+        if(idx > -1) { if(cart[idx].quantity > 1) cart[idx].quantity--; else cart.splice(idx, 1); }
+        updateCartCount(); renderCartItems();
     }
 
     function placeOrderWhatsApp() {
-        const whatsappNumber = "918982628715"; // YOUR NUMBER
+        const whatsappNumber = "918982628715"; 
         if (cart.length === 0) return;
         let msg = "DCH Cafe Order:\n\n";
         let total = 0;
-        cart.forEach((item, i) => {
-            msg += `${i+1}. ${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}\n`;
-            total += item.price * item.quantity;
-        });
+        cart.forEach((item, i) => { msg += `${i+1}. ${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}\n`; total += item.price * item.quantity; });
         msg += `\nTotal: ₹${total}`;
         window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
-    // UTILS
-    function showToast(msg) {
-        const t = document.getElementById('item-toast');
-        t.textContent = msg;
-        t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 2000);
-    }
+    function showToast(msg) { const t = document.getElementById('item-toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2000); }
     function openLocation() { window.open("https://www.google.com/maps/search/?api=1&query=Dhamnod+Coffee+House+Near+Bharat+Petrol+Pump+Maheshwar+Road+Dhamnod", '_blank'); }
     function showCart() { renderCartItems(); document.getElementById('cart-modal').classList.add('open'); }
     function closeModal() { document.getElementById('cart-modal').classList.remove('open'); }
